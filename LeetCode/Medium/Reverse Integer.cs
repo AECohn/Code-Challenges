@@ -12,7 +12,8 @@ public class Solution
 {
     public int Reverse(int x)
     {
-        try{
+        try
+        {
         string startstring = x.ToString();
         string reversestring = "";
 
