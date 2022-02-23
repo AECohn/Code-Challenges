@@ -17,4 +17,5 @@ public class Solution
     }
 }
 
-//https://leetcode.com/problems/excel-sheet-column-number/
+/*https://leetcode.com/problems/excel-sheet-column-number/
+Given a string columnTitle that represents the column title as appear in an Excel sheet, return its corresponding column number.*/
