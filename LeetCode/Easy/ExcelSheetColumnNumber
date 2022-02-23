@@ -1,120 +1,20 @@
-using System.Text.Encodings.Web;
-
-Console.WriteLine(TitleToNumber("CAA"));
-    
-    
-int TitleToNumber(string columnTitle)
+public class Solution 
 {
-    double value = 0;
-    for (int arrayIndex = columnTitle.Length-1; arrayIndex >= 0; arrayIndex--)
-    {
-       
-         
-                double formula = (columnTitle[arrayIndex] - 64) * (Math.Pow(26, (double)arrayIndex));
-                value += formula;
-                Console.WriteLine($"{columnTitle[arrayIndex]} = {formula}. this is index {arrayIndex}");
+    public int TitleToNumber(string columnTitle) 
+       {
+        char[] reverseColumn = columnTitle.ToCharArray();
+        Array.Reverse((reverseColumn));
 
-    }
-    
-    //have to invert the indexes
-    
-    return (int)value;
-}
+        double value = 0;
 
-/*
-ABA = 729
-
-A = 676
-B = 52
-A = 1
-
-
-AAA = 703
-
-A[0] = 1
-A[1] = 26 | (columnTitle[arrayIndex] - 64)*(25+arrayIndex)
-A[2] = 676 = 1(char value - 64) | (25 * (25 +2(array index)) | (65 - 64) + (25 * (25 + 2))
-
-676 Formula: (charvalue - 64) + (25 * (25 + arrayIndex))
-
-
-??? = Console.WriteLine((columnTitle[arrayIndex] - 64) + (25 * (25 + arrayIndex)) + (25 * arrayIndex)) ;
-
-AAAA = 18279
-
-A[0] = 1
-A[1] = 26 || 26 ^1
-A[2] = 676 || 26^2
-A[3] = 17576
-
-almost there = ((charvalue - 64) + (25 * (25 * (25 + 3)))) = 17501
-17576 = ((charvalue - 64) + (25 * (25 * (25 + 3))+(25*arrayIndex)))
-((charvalue - 64) + ((25*arrayIndex) + (25 * (25 * (25 + 3))+(25*arrayIndex))))
-
-CAA = 2055
-A = 1 = || asciiValue - 64
-A = 26 || asciiValue - 64 * 26^index
-C = 2028 ||asciiValue-64 * 26^index
-
-
-
-
-
-
-TitleToNumber("ABC");
-    
-    
-    int TitleToNumber(string columnTitle)
-    {
-        int counter = 0;
-        for (int arrayIndex = 0; arrayIndex < columnTitle.Length; arrayIndex++)
+        for (int i = 0; i < reverseColumn.Length; i++)
         {
-            switch (counter)
-            {
-                case 0: 
-                {
-                    //Console.WriteLine((counter));
-                    Console.WriteLine( columnTitle[arrayIndex] - 64 + (25*arrayIndex));
-                    break;
-                }
-                case 1:
-                {
-                    //Console.WriteLine((counter));
-                    //Console.WriteLine( (columnTitle[arrayIndex] - 64)+ 25 + (25*arrayIndex));
-                    Console.WriteLine((columnTitle[arrayIndex] - 64) * ((25 * arrayIndex) + arrayIndex));
-
-                    break;
-                }
-                
-                case 2:
-                {
-                    //Console.WriteLine((counter));
-                    Console.WriteLine((columnTitle[arrayIndex] - 64) + (25 * (25 + arrayIndex)));
-                    break;
-                }
-
-                case 3:
-                {
-                    Console.WriteLine((columnTitle[arrayIndex] - 64) + (25 * 25 * (25 + arrayIndex)));
-                    break;
-                }
-            }
-            counter++;
+            double formula = (reverseColumn[i] - 64) * (Math.Pow(26, (double) i));
+            value += formula;
         }
 
-
-        return 1;
+        return (int) value;
     }
+}
 
-
-//(columnTitle[arrayIndex] - 64)  * (25+arrayIndex);
-
-0 = (columnTitle[arrayIndex] - 64) + (25*arrayIndex);
-1 = (columnTitle[arrayIndex] - 64) + ((25*arrayIndex)+arrayIndex)
-2 = (columnTitle[arrayIndex] - 64) + (25 * 25 + (25 * arrayIndex))
-
-
-
-
-
-*/
+//https://leetcode.com/problems/excel-sheet-column-number/
