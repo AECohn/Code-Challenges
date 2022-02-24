@@ -14,16 +14,16 @@ public class Solution
     {
         try
         {
-        string startstring = x.ToString();
-        string reversestring = "";
+            string startstring = x.ToString();
+            string reversestring = "";
 
-        if (startstring[0] == '-')
-        {
-            reversestring = "-";
-            for (int i = startstring.Length - 1; i >= 1; i--)
+            if (startstring[0] == '-')
             {
-                reversestring += startstring[i].ToString();
-            }
+                reversestring = "-";
+                for (int i = startstring.Length - 1; i >= 1; i--)
+                {
+                    reversestring += startstring[i].ToString();
+                }
         }
         else
         {
@@ -35,7 +35,7 @@ public class Solution
 
      
 
-        return Convert.ToInt32(reversestring);
+            return Convert.ToInt32(reversestring);
         }
         catch
         {
