@@ -2,30 +2,27 @@ public class Solution
 {
     static void Main()
     {
-        Console.WriteLine(MaxSubArray(new int[] {5,4,-1,7,8}));
+        Console.WriteLine(MaxSubArray(new int[] {-2,1,-3,4,-1,2,1,-5,4}));
     }
 
     static public int MaxSubArray(int[] nums)
     {
-        var temp = GetSubArraySizes(nums);
-        return temp.Max();
-    }
-
-   
-    static public List<int> GetSubArraySizes(int[] array)
-    {
-        var Sizes = new List<int>();
         int count;
-        for (int i = 0; i < array.Length; i++)
+        int HighestNumber = int.MinValue;
+        for (int i = 0; i < nums.Length; i++)
         {
             count = 0;
-            for (int x = i; x < array.Length; x++)
+            for (int x = i; x < nums.Length; x++)
             {
-                count += array[x];
-                Sizes.Add(count);
+                count += nums[x];
+                if (count > HighestNumber)
+                {
+                    HighestNumber = count;
+                }
             }
-
         }
-        return Sizes;
+
+        return HighestNumber;
+
     }
 }
