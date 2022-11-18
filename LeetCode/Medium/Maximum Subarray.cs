@@ -2,7 +2,7 @@ public class Solution
 {
     static void Main()
     {
-        Console.WriteLine(MaxSubArray(new int[] {5, 4, -1, 7, 8}));
+        Console.WriteLine(MaxSubArray(new int[] {-2,1,-3,4,-1,2,1,-5,4}));
     }
 
     static public int MaxSubArray(int[] nums)
@@ -17,16 +17,16 @@ public class Solution
         return Sums.Max();
     }
 
-    static public List<List<int>> GetSubArrays(int[] array)
+    static public List<int[]> GetSubArrays(int[] array)
     {
-        var SubArrays = new List<List<int>>();
+        var SubArrays = new List<int[]>();
         for (int i = 0; i < array.Length; i++)
         {
             var tempList = new List<int>();
             for (int x = i; x < array.Length; x++)
             {
                 tempList.Add(array[x]);
-                SubArrays.Add(new List<int>(tempList));
+                SubArrays.Add(tempList.ToArray());
             }
         }
 
