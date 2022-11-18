@@ -2,21 +2,21 @@ public class Solution
 {
     static void Main()
     {
-        GetSubArrays(new int[] {1, 2, 3, 4});
+        Console.WriteLine(MaxSubArray(new int[] {5, 4, -1, 7, 8}));
     }
 
     static public int MaxSubArray(int[] nums)
     {
-
-        
-        for (int i = 0; i < nums.Length; i++)
+        var temp = GetSubArrays(nums);
+        var Sums = new int[temp.Count];
+        for (int i = 0; i < temp.Count; i++)
         {
-            
+            Sums[i] = temp[i].Sum();
         }
 
-        return 0;
+        return Sums.Max();
     }
-    
+
     static public List<List<int>> GetSubArrays(int[] array)
     {
         var SubArrays = new List<List<int>>();
