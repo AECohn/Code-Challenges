@@ -2,34 +2,30 @@ public class Solution
 {
     static void Main()
     {
-        Console.WriteLine(MaxSubArray(new int[] {-2,1,-3,4,-1,2,1,-5,4}));
+        Console.WriteLine(MaxSubArray(new int[] {5,4,-1,7,8}));
     }
 
     static public int MaxSubArray(int[] nums)
     {
-        var temp = GetSubArrays(nums);
-        var Sums = new int[temp.Count];
-        for (int i = 0; i < temp.Count; i++)
-        {
-            Sums[i] = temp[i].Sum();
-        }
-
-        return Sums.Max();
+        var temp = GetSubArraySizes(nums);
+        return temp.Max();
     }
 
-    static public List<int[]> GetSubArrays(int[] array)
+   
+    static public List<int> GetSubArraySizes(int[] array)
     {
-        var SubArrays = new List<int[]>();
+        var Sizes = new List<int>();
+        int count;
         for (int i = 0; i < array.Length; i++)
         {
-            var tempList = new List<int>();
+            count = 0;
             for (int x = i; x < array.Length; x++)
             {
-                tempList.Add(array[x]);
-                SubArrays.Add(tempList.ToArray());
+                count += array[x];
+                Sizes.Add(count);
             }
-        }
 
-        return SubArrays;
+        }
+        return Sizes;
     }
 }
