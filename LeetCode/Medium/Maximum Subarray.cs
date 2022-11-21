@@ -1,28 +1,40 @@
-public class Solution
+public class Solution 
 {
-    static void Main()
+    public int MaxSubArray(int[] nums) 
     {
-        Console.WriteLine(MaxSubArray(new int[] {-2,1,-3,4,-1,2,1,-5,4}));
-    }
+        int HighestNumber = nums[0];
 
-    static public int MaxSubArray(int[] nums)
-    {
-        int count;
-        int HighestNumber = int.MinValue;
-        for (int i = 0; i < nums.Length; i++)
+        int i = 0;
+
+        int Counter(int newValue, int currentCount)
         {
-            count = 0;
-            for (int x = i; x < nums.Length; x++)
+            int value = currentCount + newValue;
+
+            if (nums[i] > value)
             {
-                count += nums[x];
-                if (count > HighestNumber)
-                {
-                    HighestNumber = count;
-                }
+                value = nums[i];
             }
+
+            if (value > HighestNumber)
+            {
+                HighestNumber = value;
+            }
+
+            i++;
+
+
+            if (i == nums.Length)
+            {
+                return value;
+            }
+
+
+            Counter(nums[i], value);
+            return HighestNumber;
         }
 
-        return HighestNumber;
+        int output = Counter(nums[0], 0);
 
-    }
+        return output;
+}
 }
